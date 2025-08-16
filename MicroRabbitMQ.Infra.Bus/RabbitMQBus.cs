@@ -32,7 +32,7 @@ namespace MicroRabbitMQ.Infra.Bus
 
         public async void Publish<T>(T @event) where T : Event
         {
-            var factory = new ConnectionFactory() { HostName = "localhost " };
+            var factory = new ConnectionFactory() { HostName = "localhost" };
             using var connection = await factory.CreateConnectionAsync();
             using var channel = await connection.CreateChannelAsync();
 
@@ -44,7 +44,7 @@ namespace MicroRabbitMQ.Infra.Bus
 
             await channel.BasicPublishAsync("", eventName, body);
         }
-
+        
         public void Subscribe<T, TH>()
             where T : Event
             where TH : IEventHandler<T>
