@@ -3,6 +3,8 @@ using MicroRabbitMQ.Banking.Application.Interfaces;
 using MicroRabbitMQ.Banking.Application.Services;
 using MicroRabbitMQ.Banking.Data.Context;
 using MicroRabbitMQ.Banking.Data.Repository;
+using MicroRabbitMQ.Banking.Domain.CommandHandlers;
+using MicroRabbitMQ.Banking.Domain.Commands;
 using MicroRabbitMQ.Banking.Domain.Interfaces;
 using MicroRabbitMQ.Domain.Core.Bus;
 using MicroRabbitMQ.Infra.Bus;
@@ -15,12 +17,14 @@ namespace MicroRabbitMQ.Infra.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             //Domain Bus
-            //Domain Bus
             services.AddSingleton<IEventBus, RabbitMQBus>(sp =>
             {
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
                 return new RabbitMQBus(sp.GetService<IMediator>(), scopeFactory);
             });
+
+            //Domain Banking Commands
+            services.AddTransient<IRequestHandler<CreateTransferCommand, bool>, TransferCommandHandler>();
 
             //Application Services
             services.AddTransient<IAccountService, AccountService>();
