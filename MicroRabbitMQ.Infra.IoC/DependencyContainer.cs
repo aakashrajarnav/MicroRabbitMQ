@@ -8,6 +8,11 @@ using MicroRabbitMQ.Banking.Domain.Commands;
 using MicroRabbitMQ.Banking.Domain.Interfaces;
 using MicroRabbitMQ.Domain.Core.Bus;
 using MicroRabbitMQ.Infra.Bus;
+using MicroRabbitMQ.Transfer.Application.Interfaces;
+using MicroRabbitMQ.Transfer.Application.Services;
+using MicroRabbitMQ.Transfer.Data.Context;
+using MicroRabbitMQ.Transfer.Data.Repository;
+using MicroRabbitMQ.Transfer.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MicroRabbitMQ.Infra.IoC
@@ -28,12 +33,15 @@ namespace MicroRabbitMQ.Infra.IoC
 
             //Application Services
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<ITransferService, TransferService>();
 
             //Data Repositories
             services.AddTransient<IAccountRepository, AccountRepository>();
-            
+            services.AddTransient<ITransferRepository, TransferRepository>();
+
             //Data Context
             services.AddTransient<BankingDbContext>();
+            services.AddTransient<TransferDbContext>();
         }
     }
 }

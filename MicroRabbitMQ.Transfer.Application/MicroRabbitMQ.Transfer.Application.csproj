@@ -8,10 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MicroRabbitMQ.Domain.Core\MicroRabbitMQ.Domain.Core.csproj" />
     <ProjectReference Include="..\MicroRabbitMQ.Transfer.Domain\MicroRabbitMQ.Transfer.Domain.csproj" />
   </ItemGroup>
 

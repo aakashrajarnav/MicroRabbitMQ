@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MicroRabbitMQ.Infra.IoC\MicroRabbitMQ.Infra.IoC.csproj" />
     <ProjectReference Include="..\MicroRabbitMQ.Transfer.Data\MicroRabbitMQ.Transfer.Data.csproj" />
   </ItemGroup>
