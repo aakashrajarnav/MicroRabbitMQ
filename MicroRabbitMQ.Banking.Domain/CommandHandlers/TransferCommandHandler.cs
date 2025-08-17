@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿    using MediatR;
 using MicroRabbitMQ.Banking.Domain.Commands;
 using MicroRabbitMQ.Banking.Domain.Events;
 using MicroRabbitMQ.Domain.Core.Bus;

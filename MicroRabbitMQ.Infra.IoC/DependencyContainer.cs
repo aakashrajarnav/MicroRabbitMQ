@@ -12,6 +12,8 @@ using MicroRabbitMQ.Transfer.Application.Interfaces;
 using MicroRabbitMQ.Transfer.Application.Services;
 using MicroRabbitMQ.Transfer.Data.Context;
 using MicroRabbitMQ.Transfer.Data.Repository;
+using MicroRabbitMQ.Transfer.Domain.EventHandlers;
+using MicroRabbitMQ.Transfer.Domain.Events;
 using MicroRabbitMQ.Transfer.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,6 +29,12 @@ namespace MicroRabbitMQ.Infra.IoC
                 var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
                 return new RabbitMQBus(sp.GetService<IMediator>(), scopeFactory);
             });
+
+            //Subscriptions
+            services.AddTransient<TransferEventHandler>();
+
+            //Domain Events
+            services.AddTransient<IEventHandler<TransferCreatedEvent>, TransferEventHandler>();
 
             //Domain Banking Commands
             services.AddTransient<IRequestHandler<CreateTransferCommand, bool>, TransferCommandHandler>();
