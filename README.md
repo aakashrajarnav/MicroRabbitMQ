@@ -19,7 +19,7 @@ The solution is split into multiple services:
 
 ## 🛠 Tech Stack
 
-![Tech Stack](https://img.shields.io/badge/TechStack-.NET%206%20%7C%20RabbitMQ%20%7C%20EF%20Core%20%7C%20MVC%20%7C%20CQRS%20%7C%20DDD-blue)
+![Tech Stack](https://img.shields.io/badge/TechStack-.NET%208%20%7C%20RabbitMQ%20%7C%20EF%20Core%20%7C%20MVC%20%7C%20CQRS%20%7C%20DDD-blue)
 
 - **.NET 8 / ASP.NET Core**
 - **RabbitMQ** for messaging
